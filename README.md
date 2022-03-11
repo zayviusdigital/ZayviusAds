@@ -63,6 +63,14 @@ ZayviusAdsBanner.banner(this, banner, "ca-app-pub-3940256099942544/6300978111");
 
 ZayviusAdsInterstitial.loadInterstitial(MainActivity.this,"ca-app-pub-3940256099942544/1033173712",interval);
 ```
+## Rewarded
+
+```java
+#Admob
+
+ZayviusAdsReward.loadReward(MainActivity.this, "ca-app-pub-3940256099942544/5224354917", interval);
+```
+
 
 
 ## Developer
