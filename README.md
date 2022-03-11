@@ -28,6 +28,7 @@ dependencies {
 
 ```java
 #Admob
+
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-3940256099942544~3347511713"/>
@@ -36,18 +37,21 @@ dependencies {
 
 ```java
 #Admob
+
 ZayviusAdsInitialize.Admob(this);
 ```
 ## GDPR
 
 ```java
 #Admob
+
  ZayviusAdsGDPR.Admob(this);
 ```
 ## Banner
 
 ```java
 #Admob
+
 Button tes_i = findViewById(R.id.tes_inter);
 ZayviusAdsBanner.banner(this, banner, "ca-app-pub-3940256099942544/6300978111");
 ```
@@ -56,6 +60,7 @@ ZayviusAdsBanner.banner(this, banner, "ca-app-pub-3940256099942544/6300978111");
 
 ```java
 #Admob
+
 ZayviusAdsInterstitial.loadInterstitial(MainActivity.this,"ca-app-pub-3940256099942544/1033173712",interval);
 ```
 
