@@ -27,7 +27,6 @@ import java.util.Objects;
 public class ZayviusAdsNative {
 
     public static NativeAd nativeads;
-    // tes ads zayvius
     public static void nativeads(Activity activity,FrameLayout frameLayout, String id){
         AdLoader.Builder builder = new AdLoader.Builder(activity, id);
         // OnLoadedListener implementation.
