@@ -78,6 +78,7 @@ ZayviusAdsReward.loadReward(MainActivity.this, "ca-app-pub-3940256099942544/5224
 
 FrameLayout native_ad = findViewById(R.id.native_ad);
 ZayviusAdsNative.nativeads(this,native_ad, "ca-app-pub-3940256099942544/2247696110");
+
 #version small
 FrameLayout native_ad = findViewById(R.id.native_ad);
 ZayviusAdsNative.nativeads_small(this,native_ad, "ca-app-pub-3940256099942544/2247696110");
