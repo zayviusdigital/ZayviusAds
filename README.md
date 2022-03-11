@@ -1,7 +1,7 @@
 # ZayviusAds
 Libraries that are open source
 
-### Version release 1.1.0
+### Version release 1.2.0
 
 ## Gradle Dependency
 
