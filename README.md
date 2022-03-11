@@ -21,7 +21,7 @@ dependencyResolutionManagement {
 ### build.gradle
 ```java
 dependencies {
-	        implementation 'com.github.zayviusdigital:ZayviusAds:1.0.0'
+	        implementation 'com.github.zayviusdigital:ZayviusAds:version'
 	}
 ```
 ## AndroidManifest
