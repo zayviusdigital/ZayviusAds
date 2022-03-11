@@ -52,7 +52,7 @@ ZayviusAdsInitialize.Admob(this);
 ```java
 #Admob
 
-Button tes_i = findViewById(R.id.tes_inter);
+RelativeLayout banner = findViewById(R.id.Banner);
 ZayviusAdsBanner.banner(this, banner, "ca-app-pub-3940256099942544/6300978111");
 ```
 
