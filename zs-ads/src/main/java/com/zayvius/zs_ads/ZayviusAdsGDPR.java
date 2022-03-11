@@ -8,7 +8,7 @@ import com.google.android.ump.ConsentRequestParameters;
 import com.google.android.ump.UserMessagingPlatform;
 
 public class ZayviusAdsGDPR {
-    //Zayvius 2021
+    //Zayvius 2022
     public static ConsentInformation consentInformation;
     public static ConsentForm consentForm;
     public static void Admob(Activity activity){
