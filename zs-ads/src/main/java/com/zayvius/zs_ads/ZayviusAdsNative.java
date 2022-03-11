@@ -54,6 +54,32 @@ public class ZayviusAdsNative {
         adLoader.loadAd(adRequest);
     }
 
+    public static void nativeads_small(Activity activity,FrameLayout frameLayout, String id){
+        AdLoader.Builder builder = new AdLoader.Builder(activity, id);
+        // OnLoadedListener implementation.
+        builder.forNativeAd(nativeAd -> {
+            if (nativeads != null) {
+                nativeads.destroy();
+            }
+            nativeads = nativeAd;
+            @SuppressLint("InflateParams") NativeAdView adView =
+                    (NativeAdView) activity.getLayoutInflater().inflate(R.layout.ad_unified_lite, null);
+            populateNativeAdView(nativeAd, adView);
+            frameLayout.removeAllViews();
+            frameLayout.addView(adView);
+        });
+
+        VideoOptions videoOptions = new VideoOptions.Builder().build();
+        NativeAdOptions adOptions = new NativeAdOptions.Builder().setVideoOptions(videoOptions).build();
+        builder.withNativeAdOptions(adOptions);
+        AdLoader adLoader = builder.withAdListener(new AdListener() {
+            @Override
+            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+            }}).build();
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adLoader.loadAd(adRequest);
+    }
+
 
     public static void onDestroy() {
         if (nativeads != null) {
@@ -63,7 +89,7 @@ public class ZayviusAdsNative {
 
     public static void populateNativeAdView(NativeAd nativeAd, NativeAdView adView) {
         // Set the media view.
-        adView.setMediaView((MediaView) adView.findViewById(R.id.ad_media));
+        adView.setMediaView( adView.findViewById(R.id.ad_media));
         // Set other ad assets.
         adView.setHeadlineView(adView.findViewById(R.id.ad_headline));
         adView.setBodyView(adView.findViewById(R.id.ad_body));
