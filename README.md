@@ -71,6 +71,15 @@ ZayviusAdsInterstitial.loadInterstitial(MainActivity.this,"ca-app-pub-3940256099
 ZayviusAdsReward.loadReward(MainActivity.this, "ca-app-pub-3940256099942544/5224354917", interval);
 ```
 
+## Native
+
+```java
+#Admob
+
+FrameLayout native_ad = findViewById(R.id.native_ad);
+ZayviusAdsNative.nativeads(this,native_ad, "ca-app-pub-3940256099942544/2247696110");
+```
+
 
 
 ## Developer
