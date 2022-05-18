@@ -21,9 +21,6 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.LoadAdError;
-import com.unity3d.services.banners.BannerErrorInfo;
-import com.unity3d.services.banners.BannerView;
-import com.unity3d.services.banners.UnityBannerSize;
 import com.zayvius.zs_ads.R;
 
 public class ZayviusAdsBanner {
@@ -50,7 +47,7 @@ public class ZayviusAdsBanner {
                             BannerApplovinMAx(activity,relativeLayout);
                             break;
                         case "unity":
-                            BannerUnity(activity,relativeLayout);
+                            //BannerUnity(activity,relativeLayout);
                             break;
                         case "applovinzone":
                             BannerApplovinZone(activity,relativeLayout);
@@ -121,7 +118,7 @@ public class ZayviusAdsBanner {
                             BannerAdmob(activity,relativeLayout);
                             break;
                         case "unity":
-                            BannerUnity(activity,relativeLayout);
+                            //BannerUnity(activity,relativeLayout);
                             break;
                         case "applovinzone":
                             BannerApplovinZone(activity,relativeLayout);
@@ -165,7 +162,7 @@ public class ZayviusAdsBanner {
                             BannerApplovinMAx(activity, relativeLayout);
                             break;
                         case "unity":
-                            BannerUnity(activity, relativeLayout);
+                            //BannerUnity(activity, relativeLayout);
                             break;
                     }
                 }
@@ -175,7 +172,7 @@ public class ZayviusAdsBanner {
     }
 
     /*Unity*/
-    public static void BannerUnity(Activity activity,RelativeLayout relativeLayout){
+    /*public static void BannerUnity(Activity activity,RelativeLayout relativeLayout){
         if (ZayviusAdsOnOff.ad_unity) {
             BannerView bannerView = new BannerView(activity, ZayviusAdsIDUnity.Bannerx, new UnityBannerSize(320, 50));
             bannerView.load();
@@ -213,7 +210,7 @@ public class ZayviusAdsBanner {
             });
 
         }
-    }
+    }*/
 }
 
 

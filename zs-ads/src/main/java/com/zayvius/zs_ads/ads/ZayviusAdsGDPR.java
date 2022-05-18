@@ -7,7 +7,6 @@ import com.google.android.ump.ConsentForm;
 import com.google.android.ump.ConsentInformation;
 import com.google.android.ump.ConsentRequestParameters;
 import com.google.android.ump.UserMessagingPlatform;
-import com.unity3d.ads.metadata.MetaData;
 
 public class ZayviusAdsGDPR {
     public static ConsentInformation consentInformation;
@@ -77,11 +76,11 @@ public class ZayviusAdsGDPR {
     }
 
     /*Unity*/
-    public static void Unity(Activity activity){
+   /* public static void Unity(Activity activity){
         if (ZayviusAdsOnOff.ad_unity) {
             MetaData gdprMetaData = new MetaData(activity);
             gdprMetaData.set("gdpr.consent", true);
             gdprMetaData.commit();
         }
-    }
+    }*/
 }

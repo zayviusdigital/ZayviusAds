@@ -23,10 +23,6 @@ import com.google.android.gms.ads.OnUserEarnedRewardListener;
 import com.google.android.gms.ads.rewarded.RewardItem;
 import com.google.android.gms.ads.rewarded.RewardedAd;
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
-import com.unity3d.ads.IUnityAdsLoadListener;
-import com.unity3d.ads.IUnityAdsShowListener;
-import com.unity3d.ads.UnityAds;
-import com.unity3d.ads.UnityAdsShowOptions;
 
 import java.util.concurrent.TimeUnit;
 
@@ -108,7 +104,7 @@ public class ZayviusAdsReward {
                         applovinmax(activity);
                         break;
                     case "unity":
-                        unity();
+                        //unity();
                         break;
                     case "applovinzone":
                         applovinzone(activity);
@@ -134,7 +130,7 @@ public class ZayviusAdsReward {
                             }
                             break;
                         case "unity":
-                            UnityAds.show(activity, ZayviusAdsIDUnity.Rewardedx, new UnityAdsShowOptions(), new IUnityAdsShowListener() {
+                            /*UnityAds.show(activity, ZayviusAdsIDUnity.Rewardedx, new UnityAdsShowOptions(), new IUnityAdsShowListener() {
                                 @Override
                                 public void onUnityAdsShowFailure(String s, UnityAds.UnityAdsShowError unityAdsShowError, String s1) {
 
@@ -154,7 +150,7 @@ public class ZayviusAdsReward {
                                 public void onUnityAdsShowComplete(String s, UnityAds.UnityAdsShowCompletionState unityAdsShowCompletionState) {
 
                                 }
-                            });
+                            });*/
                             break;
                         case "applovinzone":
                             if(incentivizedInterstitial.isAdReadyToDisplay()){
@@ -242,7 +238,7 @@ public class ZayviusAdsReward {
                         admob(activity);
                         break;
                     case "unity":
-                        unity();
+                        //unity();
                         break;
                     case "applovinzone":
                         applovinzone(activity);
@@ -269,7 +265,7 @@ public class ZayviusAdsReward {
 
                             break;
                         case "unity":
-                            UnityAds.show(activity, ZayviusAdsIDUnity.Rewardedx, new UnityAdsShowOptions(), new IUnityAdsShowListener() {
+                            /*UnityAds.show(activity, ZayviusAdsIDUnity.Rewardedx, new UnityAdsShowOptions(), new IUnityAdsShowListener() {
                                 @Override
                                 public void onUnityAdsShowFailure(String s, UnityAds.UnityAdsShowError unityAdsShowError, String s1) {
 
@@ -289,7 +285,7 @@ public class ZayviusAdsReward {
                                 public void onUnityAdsShowComplete(String s, UnityAds.UnityAdsShowCompletionState unityAdsShowCompletionState) {
 
                                 }
-                            });
+                            });*/
                             break;
                         case "applovinzone":
                             if(incentivizedInterstitial.isAdReadyToDisplay()){
@@ -334,7 +330,7 @@ public class ZayviusAdsReward {
                         applovinmax(activity);
                         break;
                     case "unity":
-                        unity();
+                        //unity();
                         break;
                 }
                 loadingIklanapzone = false;
@@ -362,7 +358,7 @@ public class ZayviusAdsReward {
                             }
                             break;
                         case "unity":
-                            UnityAds.show(activity, ZayviusAdsIDUnity.Rewardedx, new UnityAdsShowOptions(), new IUnityAdsShowListener() {
+                           /* UnityAds.show(activity, ZayviusAdsIDUnity.Rewardedx, new UnityAdsShowOptions(), new IUnityAdsShowListener() {
                                 @Override
                                 public void onUnityAdsShowFailure(String s, UnityAds.UnityAdsShowError unityAdsShowError, String s1) {
 
@@ -382,7 +378,7 @@ public class ZayviusAdsReward {
                                 public void onUnityAdsShowComplete(String s, UnityAds.UnityAdsShowCompletionState unityAdsShowCompletionState) {
 
                                 }
-                            });
+                            });*/
                             break;
                     }
                 }
@@ -392,7 +388,7 @@ public class ZayviusAdsReward {
     }
 
     /*Unity*/
-    public static void unity(){
+   /* public static void unity(){
         if (ZayviusAdsOnOff.ad_unity) {
             UnityAds.load(ZayviusAdsIDUnity.Rewardedx, new IUnityAdsLoadListener() {
                 @Override
@@ -475,5 +471,5 @@ public class ZayviusAdsReward {
                 loadingIklanunity = true;
             }
         }
-    }
+    }*/
 }

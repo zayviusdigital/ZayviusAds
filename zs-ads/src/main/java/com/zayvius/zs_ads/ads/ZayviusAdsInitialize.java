@@ -13,8 +13,6 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.AdapterStatus;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
-import com.unity3d.ads.IUnityAdsInitializationListener;
-import com.unity3d.ads.UnityAds;
 
 import java.util.Map;
 
@@ -77,7 +75,7 @@ public class ZayviusAdsInitialize {
     }
 
     /*uUnity*/
-    public static void Unity(Activity activity){
+    /*public static void Unity(Activity activity){
         if (ZayviusAdsOnOff.ad_unity) {
             UnityAds.initialize(activity, ZayviusAdsIDUnity.Id_Appx, ZayviusAdsIDUnity.Tes_Modex, new IUnityAdsInitializationListener() {
                 @Override
@@ -92,5 +90,5 @@ public class ZayviusAdsInitialize {
             });
 
         }
-    }
+    }*/
 }
