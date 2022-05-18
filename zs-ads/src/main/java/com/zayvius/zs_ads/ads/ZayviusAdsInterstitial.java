@@ -19,10 +19,6 @@ import com.google.android.gms.ads.FullScreenContentCallback;
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
-import com.unity3d.ads.IUnityAdsLoadListener;
-import com.unity3d.ads.IUnityAdsShowListener;
-import com.unity3d.ads.UnityAds;
-import com.unity3d.ads.UnityAdsShowOptions;
 
 import java.util.concurrent.TimeUnit;
 
@@ -93,7 +89,7 @@ public class ZayviusAdsInterstitial {
                         applovinmax(activity);
                         break;
                     case "unity":
-                        unity();
+                        //unity();
                         break;
                     case "applovinzone":
                         applovinzone(activity);
@@ -110,7 +106,7 @@ public class ZayviusAdsInterstitial {
                             show_applovinmax();
                             break;
                         case "unity":
-                            UnityAds.show(activity, ZayviusAdsIDUnity.Interstitialx, new UnityAdsShowOptions(), new IUnityAdsShowListener() {
+                            /*UnityAds.show(activity, ZayviusAdsIDUnity.Interstitialx, new UnityAdsShowOptions(), new IUnityAdsShowListener() {
                                 @Override
                                 public void onUnityAdsShowFailure(String s, UnityAds.UnityAdsShowError unityAdsShowError, String s1) {
 
@@ -130,7 +126,7 @@ public class ZayviusAdsInterstitial {
                                 public void onUnityAdsShowComplete(String s, UnityAds.UnityAdsShowCompletionState unityAdsShowCompletionState) {
 
                                 }
-                            });
+                            });*/
                             break;
                         case "applovinzone":
                             show_applovinzone();
@@ -218,7 +214,7 @@ public class ZayviusAdsInterstitial {
                         admob(activity);
                         break;
                     case "unity":
-                        unity();
+                        //unity();
                         break;
                     case "applovinzone":
                         applovinzone(activity);
@@ -237,7 +233,7 @@ public class ZayviusAdsInterstitial {
                             }
                             break;
                         case "unity":
-                            UnityAds.show(activity, ZayviusAdsIDUnity.Interstitialx, new UnityAdsShowOptions(), new IUnityAdsShowListener() {
+                           /* UnityAds.show(activity, ZayviusAdsIDUnity.Interstitialx, new UnityAdsShowOptions(), new IUnityAdsShowListener() {
                                 @Override
                                 public void onUnityAdsShowFailure(String s, UnityAds.UnityAdsShowError unityAdsShowError, String s1) {
                                 }
@@ -256,7 +252,7 @@ public class ZayviusAdsInterstitial {
                                 public void onUnityAdsShowComplete(String s, UnityAds.UnityAdsShowCompletionState unityAdsShowCompletionState) {
 
                                 }
-                            });
+                            });*/
                             break;
 
                         case "applovinzone":
@@ -305,7 +301,7 @@ public class ZayviusAdsInterstitial {
                         admob(activity);
                         break;
                     case "unity":
-                        unity();
+                        //unity();
                         break;
                     case "applovinmax":
                         applovinmax(activity);
@@ -324,7 +320,7 @@ public class ZayviusAdsInterstitial {
                             }
                             break;
                         case "unity":
-                            UnityAds.show(activity, ZayviusAdsIDUnity.Interstitialx, new UnityAdsShowOptions(), new IUnityAdsShowListener() {
+                           /* UnityAds.show(activity, ZayviusAdsIDUnity.Interstitialx, new UnityAdsShowOptions(), new IUnityAdsShowListener() {
                                 @Override
                                 public void onUnityAdsShowFailure(String s, UnityAds.UnityAdsShowError unityAdsShowError, String s1) {
                                 }
@@ -343,7 +339,7 @@ public class ZayviusAdsInterstitial {
                                 public void onUnityAdsShowComplete(String s, UnityAds.UnityAdsShowCompletionState unityAdsShowCompletionState) {
 
                                 }
-                            });
+                            });*/
                             break;
                         case "applovinmax":
                             show_applovinmax();
@@ -363,7 +359,7 @@ public class ZayviusAdsInterstitial {
     }
 
     /*Unity*/
-    public static void unity(){
+    /*public static void unity(){
         if (ZayviusAdsOnOff.ad_unity) {
             UnityAds.load(ZayviusAdsIDUnity.Interstitialx, new IUnityAdsLoadListener() {
                 @Override
@@ -436,7 +432,7 @@ public class ZayviusAdsInterstitial {
             }
 
         }
-    }
+    }*/
 
 
 }

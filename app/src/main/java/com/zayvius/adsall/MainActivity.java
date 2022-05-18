@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
-import com.zayvius.zs_ads.ads.ZayviusAdsOnOff;
 import com.zayvius.zs_ads.settings.Config;
 
 public class MainActivity extends AppCompatActivity {
