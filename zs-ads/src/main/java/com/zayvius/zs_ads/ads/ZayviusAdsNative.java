@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 
 import com.applovin.mediation.MaxAd;
 import com.applovin.mediation.MaxAdRevenueListener;
+import com.applovin.mediation.MaxError;
 import com.applovin.mediation.nativeAds.MaxNativeAdListener;
 import com.applovin.mediation.nativeAds.MaxNativeAdLoader;
 import com.applovin.mediation.nativeAds.MaxNativeAdView;
@@ -63,6 +64,9 @@ public class ZayviusAdsNative {
             AdLoader adLoader = builder.withAdListener(new AdListener() {
                 @Override
                 public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                    if ("applovinmax".equals(ZayviusAdsBackup.backup_ad)) {
+                        NativeApplovinMaxManual(activity,frameLayout);
+                    }
                 }
             }).build();
             AdRequest adRequest = new AdRequest.Builder().build();
@@ -94,6 +98,12 @@ public class ZayviusAdsNative {
                     loadedNativeAd = maxAd;
                     frameLayout.removeAllViews();
                     frameLayout.addView(maxNativeAdView);
+                }
+                @Override
+                public void onNativeAdLoadFailed(String s, MaxError maxError) {
+                    if ("admob".equals(ZayviusAdsBackup.backup_ad)) {
+                        NativeAdmob(activity,frameLayout);
+                    }
                 }
             });
             nativeAdLoader.loadAd(createNativeAdView(activity));
