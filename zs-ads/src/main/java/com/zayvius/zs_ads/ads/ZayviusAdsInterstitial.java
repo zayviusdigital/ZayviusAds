@@ -2,6 +2,7 @@ package com.zayvius.zs_ads.ads;
 
 import android.app.Activity;
 import android.os.Handler;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 
@@ -43,6 +44,21 @@ public class ZayviusAdsInterstitial {
     /*Unity*/
     public static boolean loadingIklanunity=true;
     public static Integer hitungunity=0;
+
+    /*Main Ads*/
+    public static void InterstitialAds(Activity activity, int interval_inter){
+        switch (ZayviusAdsMain.main_ad) {
+            case "admob":
+                AdmobloadInterstitial(activity,interval_inter);
+                break;
+            case "applovinmax":
+               ApplovinMaxloadInterstitial(activity,interval_inter);
+                break;
+            case "applovinzone":
+               ApplovinZoneloadInterstitial(activity,interval_inter);
+                break;
+        }
+    }
 
     public static void admob(Activity activity){
         if (ZayviusAdsOnOff.ad_admob) {
