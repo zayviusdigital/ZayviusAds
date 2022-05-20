@@ -24,6 +24,21 @@ import com.google.android.gms.ads.LoadAdError;
 import com.zayvius.zs_ads.R;
 
 public class ZayviusAdsBanner {
+    /*Main Ads*/
+    public static void BannerAds(Activity activity,RelativeLayout relativeLayout){
+        switch (ZayviusAdsMain.main_ad) {
+            case "admob":
+                BannerAdmob(activity,relativeLayout);
+                break;
+            case "applovinmax":
+                BannerApplovinMax(activity,relativeLayout);
+                break;
+            case "applovinzone":
+                BannerApplovinZone(activity,relativeLayout);
+                break;
+        }
+    }
+
     /*Admob*/
     public static void BannerAdmob(Activity activity, RelativeLayout relativeLayout) {
         if (ZayviusAdsOnOff.ad_admob) {
@@ -44,7 +59,7 @@ public class ZayviusAdsBanner {
                     // Code to be executed when an ad request fails.
                     switch (ZayviusAdsBackup.backup_ad) {
                         case "applovinmax":
-                            BannerApplovinMAx(activity,relativeLayout);
+                            BannerApplovinMax(activity,relativeLayout);
                             break;
                         case "unity":
                             //BannerUnity(activity,relativeLayout);
@@ -77,7 +92,7 @@ public class ZayviusAdsBanner {
 
     /*ApplovinMax*/
     @SuppressLint("ResourceAsColor")
-    public static void BannerApplovinMAx(Activity activity, RelativeLayout relativeLayout){
+    public static void BannerApplovinMax(Activity activity, RelativeLayout relativeLayout){
         if (ZayviusAdsOnOff.ad_applovinmax) {
             MaxAdView adView = new MaxAdView(ZayviusAdsIDApplovinMax.Bannerx, activity);
             adView.setListener(new MaxAdViewAdListener() {
@@ -159,7 +174,7 @@ public class ZayviusAdsBanner {
                             BannerAdmob(activity, relativeLayout);
                             break;
                         case "applovinmax":
-                            BannerApplovinMAx(activity, relativeLayout);
+                            BannerApplovinMax(activity, relativeLayout);
                             break;
                         case "unity":
                             //BannerUnity(activity, relativeLayout);

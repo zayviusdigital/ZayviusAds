@@ -6,7 +6,6 @@ import android.os.Handler;
 import androidx.annotation.NonNull;
 
 import com.applovin.adview.AppLovinIncentivizedInterstitial;
-import com.applovin.adview.AppLovinInterstitialAdDialog;
 import com.applovin.mediation.MaxAd;
 import com.applovin.mediation.MaxError;
 import com.applovin.mediation.MaxReward;
@@ -47,6 +46,21 @@ public class ZayviusAdsReward {
     /*Unity*/
     public static boolean loadingIklanunity=true;
     public static Integer hitungunity=0;
+
+    /*Main Ads*/
+    public static void RewardedAds(Activity activity, int interval_reward){
+        switch (ZayviusAdsMain.main_ad) {
+            case "admob":
+                RewardedAdmob(activity,interval_reward);
+                break;
+            case "applovinmax":
+                RewardedApplovinMax(activity,interval_reward);
+                break;
+            case "applovinzone":
+               RewardedApplovinZone(activity,interval_reward);
+                break;
+        }
+    }
 
     public static void admob(Activity activity){
         if (ZayviusAdsOnOff.ad_admob) {
