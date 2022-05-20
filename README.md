@@ -1,5 +1,4 @@
 # ZayviusAds
-Libraries that are open source
 
 ### Version release 1.2.0
 
