@@ -1,10 +1,10 @@
 package com.zayvius.zs_ads.ads;
 
 public class ZayviusAdsIDAdmob {
-        public static String Bannerx;
-        public static String Interstitialx;
-        public static String Nativex;
-        public static String Rewardedx;
+        protected static String Bannerx;
+        protected static String Interstitialx;
+        protected static String Nativex;
+        protected static String Rewardedx;
         public static void id_ad(String Banner,String Interstitial,String Native,String Rewarded){
                 Bannerx = Banner;
                 Interstitialx = Interstitial;

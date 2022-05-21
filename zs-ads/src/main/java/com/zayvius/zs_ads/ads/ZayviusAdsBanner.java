@@ -40,7 +40,7 @@ public class ZayviusAdsBanner {
     }
 
     /*Admob*/
-    public static void BannerAdmob(Activity activity, RelativeLayout relativeLayout) {
+    private static void BannerAdmob(Activity activity, RelativeLayout relativeLayout) {
         if (ZayviusAdsOnOff.ad_admob) {
             AdView adView = new AdView(activity);
             adView.setAdSize(AdSize.BANNER);
@@ -92,71 +92,73 @@ public class ZayviusAdsBanner {
 
     /*ApplovinMax*/
     @SuppressLint("ResourceAsColor")
-    public static void BannerApplovinMax(Activity activity, RelativeLayout relativeLayout){
+    private static void BannerApplovinMax(Activity activity, RelativeLayout relativeLayout){
         if (ZayviusAdsOnOff.ad_applovinmax) {
-            MaxAdView adView = new MaxAdView(ZayviusAdsIDApplovinMax.Bannerx, activity);
-            adView.setListener(new MaxAdViewAdListener() {
-                @Override
-                public void onAdExpanded(MaxAd ad) {
+            if (!ZayviusAdsIDApplovinMax.Bannerx.equals("")){
+                MaxAdView adView = new MaxAdView(ZayviusAdsIDApplovinMax.Bannerx, activity);
+                adView.setListener(new MaxAdViewAdListener() {
+                    @Override
+                    public void onAdExpanded(MaxAd ad) {
 
-                }
-
-                @Override
-                public void onAdCollapsed(MaxAd ad) {
-
-                }
-
-                @Override
-                public void onAdLoaded(MaxAd ad) {
-
-                }
-
-                @Override
-                public void onAdDisplayed(MaxAd ad) {
-
-                }
-
-                @Override
-                public void onAdHidden(MaxAd ad) {
-
-                }
-
-                @Override
-                public void onAdClicked(MaxAd ad) {
-
-                }
-
-                @Override
-                public void onAdLoadFailed(String adUnitId, MaxError error) {
-                    switch (ZayviusAdsBackup.backup_ad) {
-                        case "admob":
-                            BannerAdmob(activity,relativeLayout);
-                            break;
-                        case "unity":
-                            //BannerUnity(activity,relativeLayout);
-                            break;
-                        case "applovinzone":
-                            BannerApplovinZone(activity,relativeLayout);
-                            break;
                     }
-                }
 
-                @Override
-                public void onAdDisplayFailed(MaxAd ad, MaxError error) {
+                    @Override
+                    public void onAdCollapsed(MaxAd ad) {
 
-                }
-            });
-            int width = ViewGroup.LayoutParams.MATCH_PARENT;
-            int heightPx = activity.getResources().getDimensionPixelSize(R.dimen.banner_height);
-            adView.setLayoutParams(new FrameLayout.LayoutParams(width, heightPx));
-            adView.setBackgroundColor(R.color.black);
-            relativeLayout.addView(adView);
-            adView.loadAd();
+                    }
+
+                    @Override
+                    public void onAdLoaded(MaxAd ad) {
+
+                    }
+
+                    @Override
+                    public void onAdDisplayed(MaxAd ad) {
+
+                    }
+
+                    @Override
+                    public void onAdHidden(MaxAd ad) {
+
+                    }
+
+                    @Override
+                    public void onAdClicked(MaxAd ad) {
+
+                    }
+
+                    @Override
+                    public void onAdLoadFailed(String adUnitId, MaxError error) {
+                        switch (ZayviusAdsBackup.backup_ad) {
+                            case "admob":
+                                BannerAdmob(activity,relativeLayout);
+                                break;
+                            case "unity":
+                                //BannerUnity(activity,relativeLayout);
+                                break;
+                            case "applovinzone":
+                                BannerApplovinZone(activity,relativeLayout);
+                                break;
+                        }
+                    }
+
+                    @Override
+                    public void onAdDisplayFailed(MaxAd ad, MaxError error) {
+
+                    }
+                });
+                int width = ViewGroup.LayoutParams.MATCH_PARENT;
+                int heightPx = activity.getResources().getDimensionPixelSize(R.dimen.banner_height);
+                adView.setLayoutParams(new FrameLayout.LayoutParams(width, heightPx));
+                adView.setBackgroundColor(R.color.black);
+                relativeLayout.addView(adView);
+                adView.loadAd();
+            }
         }
     }
 
     /*ApplovinZone*/
-    public static void BannerApplovinZone(Activity activity,RelativeLayout relativeLayout){
+    private static void BannerApplovinZone(Activity activity,RelativeLayout relativeLayout){
         if (ZayviusAdsOnOff.ad_applovinzone) {
             AppLovinAdView adView = new AppLovinAdView(AppLovinAdSize.BANNER, ZayviusAdsIDApplovinZone.Zone_Bannerx, activity);
             relativeLayout.addView(adView);

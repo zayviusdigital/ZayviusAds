@@ -37,7 +37,7 @@ public class ZayviusAdsGDPR {
         }
     }
 
-    public static void loadForm(Activity activity){
+    private static void loadForm(Activity activity){
         UserMessagingPlatform.loadConsentForm(
                 activity,
                 consentForm -> {

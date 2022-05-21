@@ -28,24 +28,24 @@ import java.util.concurrent.TimeUnit;
 public class ZayviusAdsReward {
 
     /*Admob*/
-    public static RewardedAd mRewardedAd;
-    public static boolean loadingIklan=true;
-    public static Integer hitung=0;
+    private static RewardedAd mRewardedAd;
+    private static boolean loadingIklan=true;
+    private static Integer hitung=0;
 
     /*ApplovinMax*/
-    public static boolean loadingIklanapmax=true;
-    public static Integer hitungapmax=0;
-    public static MaxRewardedAd rewardedAd;
-    public static int           retryAttempt;
+    private static boolean loadingIklanapmax=true;
+    private static Integer hitungapmax=0;
+    private static MaxRewardedAd rewardedAd;
+    private static int           retryAttempt;
 
     /*ApplovinZone*/
-    public static boolean loadingIklanapzone=true;
-    public static Integer hitungapzone=0;
-    public static AppLovinIncentivizedInterstitial incentivizedInterstitial;
+    private static boolean loadingIklanapzone=true;
+    private static Integer hitungapzone=0;
+    private static AppLovinIncentivizedInterstitial incentivizedInterstitial;
 
     /*Unity*/
-    public static boolean loadingIklanunity=true;
-    public static Integer hitungunity=0;
+    private static boolean loadingIklanunity=true;
+    private static Integer hitungunity=0;
 
     /*Main Ads*/
     public static void RewardedAds(Activity activity, int interval_reward){
@@ -54,7 +54,9 @@ public class ZayviusAdsReward {
                 RewardedAdmob(activity,interval_reward);
                 break;
             case "applovinmax":
-                RewardedApplovinMax(activity,interval_reward);
+                if (!ZayviusAdsIDApplovinMax.Rewardedx.equals("")) {
+                    RewardedApplovinMax(activity, interval_reward);
+                }
                 break;
             case "applovinzone":
                RewardedApplovinZone(activity,interval_reward);
@@ -62,7 +64,7 @@ public class ZayviusAdsReward {
         }
     }
 
-    public static void admob(Activity activity){
+    private static void admob(Activity activity){
         if (ZayviusAdsOnOff.ad_admob) {
             AdRequest adRequest = new AdRequest.Builder().build();
             RewardedAd.load(activity, ZayviusAdsIDAdmob.Rewardedx,
@@ -108,7 +110,7 @@ public class ZayviusAdsReward {
     }
 
 
-    public static void RewardedAdmob(Activity activity, int interval_reward) {
+    private static void RewardedAdmob(Activity activity, int interval_reward) {
         if (ZayviusAdsOnOff.ad_admob) {
             hitung++;
             if (loadingIklan) {
@@ -179,7 +181,7 @@ public class ZayviusAdsReward {
     }
 
     /*ApplovinMax*/
-    public static void applovinmax( Activity activity){
+    private static void applovinmax( Activity activity){
         if (ZayviusAdsOnOff.ad_applovinmax) {
             rewardedAd = MaxRewardedAd.getInstance(ZayviusAdsIDApplovinMax.Rewardedx, activity);
             rewardedAd.setListener(new MaxRewardedAdListener() {
@@ -242,7 +244,7 @@ public class ZayviusAdsReward {
         }
     }
 
-    public static void RewardedApplovinMax(Activity activity, int interval_reward) {
+    private static void RewardedApplovinMax(Activity activity, int interval_reward) {
         if (ZayviusAdsOnOff.ad_applovinmax) {
             hitungapmax++;
             if (loadingIklanapmax) {
@@ -314,7 +316,7 @@ public class ZayviusAdsReward {
     }
 
     /*ApplovinZone*/
-    public static void applovinzone(Activity activity){
+    private static void applovinzone(Activity activity){
         if (ZayviusAdsOnOff.ad_applovinzone) {
             incentivizedInterstitial = AppLovinIncentivizedInterstitial.create(ZayviusAdsIDApplovinZone.Zone_Rewardedx, AppLovinSdk.getInstance(activity));
             incentivizedInterstitial.preload(new AppLovinAdLoadListener() {
@@ -331,7 +333,7 @@ public class ZayviusAdsReward {
         }
     }
 
-    public static void RewardedApplovinZone(Activity activity, int interval_reward) {
+    private static void RewardedApplovinZone(Activity activity, int interval_reward) {
         if (ZayviusAdsOnOff.ad_applovinzone) {
             hitungapzone++;
             if (loadingIklanapzone) {
