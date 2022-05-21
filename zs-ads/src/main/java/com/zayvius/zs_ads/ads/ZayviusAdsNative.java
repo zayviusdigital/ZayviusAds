@@ -18,6 +18,7 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdLoader;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MuteThisAdListener;
 import com.google.android.gms.ads.VideoOptions;
 import com.google.android.gms.ads.nativead.NativeAd;
 import com.google.android.gms.ads.nativead.NativeAdOptions;
@@ -27,35 +28,40 @@ import com.zayvius.zs_ads.R;
 public class ZayviusAdsNative {
 
     /*ApplovinMax*/
-    public static MaxNativeAdLoader nativeAdLoader;
-    public static MaxAd loadedNativeAd;
-    public static MaxNativeAdLoader nativeAdLoadersmall;
-    public static MaxAd loadedNativeAdsmall;
+    private static MaxNativeAdLoader nativeAdLoader;
+    private static MaxAd loadedNativeAd;
+    private static MaxNativeAdLoader nativeAdLoadersmall;
+    private static MaxAd loadedNativeAdsmall;
 
     /*Admob*/
-    public static NativeAd nativeads;
-    public static NativeAd nativeadssmall;
+    private static NativeAd nativeads;
+    private static NativeAd nativeadssmall;
 
-    public static void NativeAds(Activity activity, FrameLayout frameLayout, boolean size_small){
+    /*Click Native*/
+    public static boolean Disable_Click_ONOFF=false;
+
+    public static void NativeAds(Activity activity, FrameLayout frameLayout,boolean disable_click, boolean size_small){
         switch (ZayviusAdsMain.main_ad) {
             case "admob":
                 if (size_small){
-                    NativeAdmobSmall(activity,frameLayout);
+                    NativeAdmobSmall(activity,frameLayout,disable_click);
                 }else {
-                    NativeAdmob(activity,frameLayout);
+                    NativeAdmob(activity,frameLayout,disable_click);
                 }
                 break;
             case "applovinmax":
-                if (size_small){
-                    NativeApplovinMaxManualSmall(activity,frameLayout);
-                }else {
-                    NativeApplovinMaxManual(activity,frameLayout);
+                if (!ZayviusAdsIDApplovinMax.Nativex.equals("")){
+                    if (size_small){
+                        NativeApplovinMaxManualSmall(activity,frameLayout,disable_click);
+                    }else {
+                        NativeApplovinMaxManual(activity,frameLayout,disable_click);
+                    }
                 }
                 break;
         }
     }
     /*Admob*/
-    public static void NativeAdmob(Activity activity,FrameLayout frameLayout){
+    private static void NativeAdmob(Activity activity,FrameLayout frameLayout,boolean disable_click){
         if (ZayviusAdsOnOff.ad_admob) {
             AdLoader.Builder builder = new AdLoader.Builder(activity, ZayviusAdsIDAdmob.Nativex);
             // OnLoadedListener implementation.
@@ -66,7 +72,11 @@ public class ZayviusAdsNative {
                 nativeads = nativeAd;
                 @SuppressLint("InflateParams") NativeAdView adView =
                         (NativeAdView) activity.getLayoutInflater().inflate(R.layout.ad_unified, null);
-                NativeAdsConfigAdmob.populateNativeAdView(nativeAd, adView);
+                if (disable_click){
+                    NativeAdsConfigAdmob.populateNativeAdView_disable_click(nativeAd, adView);
+                }else {
+                    NativeAdsConfigAdmob.populateNativeAdView(nativeAd, adView);
+                }
                 frameLayout.removeAllViews();
                 frameLayout.addView(adView);
             });
@@ -78,8 +88,12 @@ public class ZayviusAdsNative {
                 @Override
                 public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
                     if ("applovinmax".equals(ZayviusAdsBackup.backup_ad)) {
-                        NativeApplovinMaxManual(activity,frameLayout);
+                        NativeApplovinMaxManual(activity,frameLayout,disable_click);
                     }
+                }
+                @Override
+                public void onAdClicked() {
+                    Disable_Click_ONOFF = true;
                 }
             }).build();
             AdRequest adRequest = new AdRequest.Builder().build();
@@ -88,7 +102,7 @@ public class ZayviusAdsNative {
     }
 
     /*Admob Small*/
-    public static void NativeAdmobSmall(Activity activity,FrameLayout frameLayout){
+    private static void NativeAdmobSmall(Activity activity,FrameLayout frameLayout, boolean disable_click){
         if (ZayviusAdsOnOff.ad_admob) {
             AdLoader.Builder builder = new AdLoader.Builder(activity, ZayviusAdsIDAdmob.Nativex);
             // OnLoadedListener implementation.
@@ -99,7 +113,11 @@ public class ZayviusAdsNative {
                 nativeadssmall = nativeAd;
                 @SuppressLint("InflateParams") NativeAdView adView =
                         (NativeAdView) activity.getLayoutInflater().inflate(R.layout.nativeadmob_small, null);
-                NativeAdsConfigAdmobSmall.populateNativeAdView(nativeAd, adView);
+                if (disable_click){
+                    NativeAdsConfigAdmobSmall.populateNativeAdView_disable_click(nativeAd, adView);
+                }else {
+                    NativeAdsConfigAdmobSmall.populateNativeAdView(nativeAd, adView);
+                }
                 frameLayout.removeAllViews();
                 frameLayout.addView(adView);
             });
@@ -111,8 +129,12 @@ public class ZayviusAdsNative {
                 @Override
                 public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
                     if ("applovinmax".equals(ZayviusAdsBackup.backup_ad)) {
-                        NativeApplovinMaxManualSmall(activity,frameLayout);
+                        NativeApplovinMaxManualSmall(activity,frameLayout,disable_click);
                     }
+                }
+                @Override
+                public void onAdClicked() {
+                    Disable_Click_ONOFF = true;
                 }
             }).build();
             AdRequest adRequest = new AdRequest.Builder().build();
@@ -122,7 +144,7 @@ public class ZayviusAdsNative {
 
 
     /*ApplovinMax*/
-    public static void NativeApplovinMaxManual(Activity activity,FrameLayout frameLayout){
+    private static void NativeApplovinMaxManual(Activity activity,FrameLayout frameLayout, boolean disable_click){
         if (ZayviusAdsOnOff.ad_applovinmax) {
             nativeAdLoader = new MaxNativeAdLoader(ZayviusAdsIDApplovinMax.Nativex, activity);
             nativeAdLoader.setRevenueListener(new MaxAdRevenueListener() {
@@ -148,8 +170,12 @@ public class ZayviusAdsNative {
                 @Override
                 public void onNativeAdLoadFailed(String s, MaxError maxError) {
                     if ("admob".equals(ZayviusAdsBackup.backup_ad)) {
-                        NativeAdmob(activity,frameLayout);
+                        NativeAdmob(activity,frameLayout,disable_click);
                     }
+                }
+                @Override
+                public void onNativeAdClicked(MaxAd maxAd) {
+                    super.onNativeAdClicked(maxAd);
                 }
             });
             nativeAdLoader.loadAd(createNativeAdView(activity));
@@ -157,7 +183,7 @@ public class ZayviusAdsNative {
     }
 
     /*ApplovinMax Small*/
-    public static void NativeApplovinMaxManualSmall(Activity activity,FrameLayout frameLayout){
+    private static void NativeApplovinMaxManualSmall(Activity activity,FrameLayout frameLayout,boolean disable_click){
         if (ZayviusAdsOnOff.ad_applovinmax) {
             nativeAdLoadersmall = new MaxNativeAdLoader(ZayviusAdsIDApplovinMax.Nativex, activity);
             nativeAdLoadersmall.setRevenueListener(new MaxAdRevenueListener() {
@@ -183,15 +209,19 @@ public class ZayviusAdsNative {
                 @Override
                 public void onNativeAdLoadFailed(String s, MaxError maxError) {
                     if ("admob".equals(ZayviusAdsBackup.backup_ad)) {
-                        NativeAdmobSmall(activity,frameLayout);
+                        NativeAdmobSmall(activity,frameLayout,disable_click);
                     }
+                }
+                @Override
+                public void onNativeAdClicked(MaxAd maxAd) {
+                    super.onNativeAdClicked(maxAd);
                 }
             });
             nativeAdLoadersmall.loadAd(createNativeAdViewsmall(activity));
         }
     }
 
-    public static MaxNativeAdView createNativeAdView(Activity context) {
+    private static MaxNativeAdView createNativeAdView(Activity context) {
         MaxNativeAdViewBinder binder = new MaxNativeAdViewBinder.Builder(R.layout.native_ap)
                 .setTitleTextViewId( R.id.title_text_view )
                 .setBodyTextViewId( R.id.body_text_view )
@@ -204,7 +234,7 @@ public class ZayviusAdsNative {
 
         return new MaxNativeAdView( binder,context );
     }
-    public static MaxNativeAdView createNativeAdViewsmall(Activity context) {
+    private static MaxNativeAdView createNativeAdViewsmall(Activity context) {
         MaxNativeAdViewBinder binder = new MaxNativeAdViewBinder.Builder(R.layout.native_ap_small)
                 .setTitleTextViewId( R.id.title_text_view )
                 .setBodyTextViewId( R.id.body_text_view )

@@ -25,25 +25,25 @@ import java.util.concurrent.TimeUnit;
 
 public class ZayviusAdsInterstitial {
     /*Admob*/
-    public static InterstitialAd mInterstitialAd;
-    public static boolean loadingIklan=true;
-    public static Integer hitung=0;
+    private static InterstitialAd mInterstitialAd;
+    private static boolean loadingIklan=true;
+    private static Integer hitung=0;
 
     /*ApplovinMax*/
-    public static MaxInterstitialAd interstitialAd;
-    public static int retryAttempt;
-    public static boolean loadingIklanapmax=true;
-    public static Integer hitungapmax=0;
+    private static MaxInterstitialAd interstitialAd;
+    private static int retryAttempt;
+    private static boolean loadingIklanapmax=true;
+    private static Integer hitungapmax=0;
 
     /*ApplovinZone*/
-    public static AppLovinAd currentAd;
-    public static AppLovinInterstitialAdDialog interstitialAdZone;
-    public static boolean loadingIklanapzone=true;
-    public static Integer hitungapzone=0;
+    private static AppLovinAd currentAd;
+    private static AppLovinInterstitialAdDialog interstitialAdZone;
+    private static boolean loadingIklanapzone=true;
+    private static Integer hitungapzone=0;
 
     /*Unity*/
-    public static boolean loadingIklanunity=true;
-    public static Integer hitungunity=0;
+    private static boolean loadingIklanunity=true;
+    private static Integer hitungunity=0;
 
     /*Main Ads*/
     public static void InterstitialAds(Activity activity, int interval_inter){
@@ -52,7 +52,9 @@ public class ZayviusAdsInterstitial {
                 AdmobloadInterstitial(activity,interval_inter);
                 break;
             case "applovinmax":
-               ApplovinMaxloadInterstitial(activity,interval_inter);
+                if (!ZayviusAdsIDApplovinMax.Interstitialx.equals("")){
+                    ApplovinMaxloadInterstitial(activity,interval_inter);
+                }
                 break;
             case "applovinzone":
                ApplovinZoneloadInterstitial(activity,interval_inter);
@@ -60,7 +62,7 @@ public class ZayviusAdsInterstitial {
         }
     }
 
-    public static void admob(Activity activity){
+    private static void admob(Activity activity){
         if (ZayviusAdsOnOff.ad_admob) {
             AdRequest adRequest = new AdRequest.Builder().build();
             InterstitialAd.load(activity, ZayviusAdsIDAdmob.Interstitialx, adRequest, new InterstitialAdLoadCallback() {
@@ -95,7 +97,7 @@ public class ZayviusAdsInterstitial {
         }
     }
 
-    public static void AdmobloadInterstitial(Activity activity, int interval_inter) {
+    private static void AdmobloadInterstitial(Activity activity, int interval_inter) {
         if (ZayviusAdsOnOff.ad_admob) {
             hitung++;
             if (loadingIklan) {
@@ -154,14 +156,14 @@ public class ZayviusAdsInterstitial {
         }
     }
 
-    public static void show_admob(Activity activity){
+    private static void show_admob(Activity activity){
         if (mInterstitialAd != null) {
             mInterstitialAd.show(activity);
         }
     }
 
     /*ApplovinMax*/
-    public static void applovinmax(Activity activity){
+    private static void applovinmax(Activity activity){
         if (ZayviusAdsOnOff.ad_applovinmax) {
             interstitialAd = new MaxInterstitialAd(ZayviusAdsIDApplovinMax.Interstitialx, activity);
             interstitialAd.setListener(new MaxAdViewAdListener() {
@@ -220,7 +222,7 @@ public class ZayviusAdsInterstitial {
         }
     }
 
-    public static void ApplovinMaxloadInterstitial(Activity activity , int interval_inter) {
+    private static void ApplovinMaxloadInterstitial(Activity activity , int interval_inter) {
         if (ZayviusAdsOnOff.ad_applovinmax) {
             hitungapmax++;
             if (loadingIklanapmax) {
@@ -282,14 +284,14 @@ public class ZayviusAdsInterstitial {
         }
     }
 
-    public static void show_applovinmax(){
+    private static void show_applovinmax(){
         if (interstitialAd.isReady()) {
             interstitialAd.showAd();
         }
     }
 
     /*ApplovinZone*/
-    public static void applovinzone(Activity activity){
+    private static void applovinzone(Activity activity){
         if (ZayviusAdsOnOff.ad_applovinzone) {
             interstitialAdZone = AppLovinInterstitialAd.create(AppLovinSdk.getInstance(activity), activity);
             AppLovinSdk.getInstance(activity).getAdService().loadNextAdForZoneId(ZayviusAdsIDApplovinZone.Zone_Interstitialx, new AppLovinAdLoadListener() {
@@ -307,7 +309,7 @@ public class ZayviusAdsInterstitial {
         }
     }
 
-    public static void ApplovinZoneloadInterstitial(Activity activity , int interval_inter) {
+    private static void ApplovinZoneloadInterstitial(Activity activity , int interval_inter) {
         if (ZayviusAdsOnOff.ad_applovinzone) {
             hitungapzone++;
             if (loadingIklanapzone) {
@@ -368,7 +370,7 @@ public class ZayviusAdsInterstitial {
         }
     }
 
-    public static void show_applovinzone(){
+    private static void show_applovinzone(){
         if ( currentAd != null ) {
             interstitialAdZone.showAndRender( currentAd );
         }

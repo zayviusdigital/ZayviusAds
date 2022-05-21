@@ -22,7 +22,9 @@
         android:layout_below="@id/bt_next"/>
 
     <FrameLayout
+        android:background="@drawable/bg_native"
         android:id="@+id/native_ads"
+        android:layout_margin="4dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"/>
