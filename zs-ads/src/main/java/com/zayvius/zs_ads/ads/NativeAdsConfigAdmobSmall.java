@@ -87,10 +87,10 @@ public class NativeAdsConfigAdmobSmall {
         adView.setBodyView(adView.findViewById(R.id.ad_body));
         adView.setCallToActionView(adView.findViewById(R.id.ad_call_to_action));
         adView.setIconView(adView.findViewById(R.id.ad_app_icon));
-        adView.findViewById(R.id.ad_headline).setClickable(false);
-        adView.findViewById(R.id.ad_body).setClickable(false);
-        adView.findViewById(R.id.ad_call_to_action).setClickable(false);
-        adView.findViewById(R.id.ad_app_icon).setClickable(false);
+        adView.findViewById(R.id.ad_headline).setEnabled(false);
+        adView.findViewById(R.id.ad_body).setEnabled(false);
+        adView.findViewById(R.id.ad_call_to_action).setEnabled(false);
+        adView.findViewById(R.id.ad_app_icon).setEnabled(false);
 
         // The headline and mediaContent are guaranteed to be in every NativeAd.
         ((TextView) Objects.requireNonNull(adView.getHeadlineView())).setText(nativeAd.getHeadline());

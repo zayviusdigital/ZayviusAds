@@ -123,15 +123,15 @@ public class NativeAdsConfigAdmob {
         adView.setStarRatingView(adView.findViewById(R.id.ad_stars));
         adView.setStoreView(adView.findViewById(R.id.ad_store));
         adView.setAdvertiserView(adView.findViewById(R.id.ad_advertiser));
-        adView.findViewById(R.id.ad_media).setClickable(false);
-        adView.findViewById(R.id.ad_headline).setClickable(false);
-        adView.findViewById(R.id.ad_body).setClickable(false);
-        adView.findViewById(R.id.ad_call_to_action).setClickable(false);
-        adView.findViewById(R.id.ad_app_icon).setClickable(false);
-        adView.findViewById(R.id.ad_price).setClickable(false);
-        adView.findViewById(R.id.ad_stars).setClickable(false);
-        adView.findViewById(R.id.ad_store).setClickable(false);
-        adView.findViewById(R.id.ad_advertiser).setClickable(false);
+        adView.findViewById(R.id.ad_media).setEnabled(false);
+        adView.findViewById(R.id.ad_headline).setEnabled(false);
+        adView.findViewById(R.id.ad_body).setEnabled(false);
+        adView.findViewById(R.id.ad_call_to_action).setEnabled(false);
+        adView.findViewById(R.id.ad_app_icon).setEnabled(false);
+        adView.findViewById(R.id.ad_price).setEnabled(false);
+        adView.findViewById(R.id.ad_stars).setEnabled(false);
+        adView.findViewById(R.id.ad_store).setEnabled(false);
+        adView.findViewById(R.id.ad_advertiser).setEnabled(false);
 
         // The headline and mediaContent are guaranteed to be in every NativeAd.
         ((TextView) Objects.requireNonNull(adView.getHeadlineView())).setText(nativeAd.getHeadline());
