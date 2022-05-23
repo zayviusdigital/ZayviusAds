@@ -47,6 +47,8 @@ public class ZayviusAdsNative {
 
     /*Click Native*/
     public static boolean Disable_Click_ONOFF=false;
+    public static boolean IntervalNativeMethod1=false;
+
 
     public static void NativeAds(Activity activity, FrameLayout frameLayout,boolean disable_click, boolean size_small){
         switch (ZayviusAdsMain.main_ad) {
@@ -102,6 +104,7 @@ public class ZayviusAdsNative {
                 @Override
                 public void onAdClicked() {
                     Disable_Click_ONOFF = true;
+                    IntervalNativeMethod1 = true;
                 }
             }).build();
             AdRequest adRequest = new AdRequest.Builder().build();
@@ -143,6 +146,7 @@ public class ZayviusAdsNative {
                 @Override
                 public void onAdClicked() {
                     Disable_Click_ONOFF = true;
+                    IntervalNativeMethod1 = true;
                 }
             }).build();
             AdRequest adRequest = new AdRequest.Builder().build();
