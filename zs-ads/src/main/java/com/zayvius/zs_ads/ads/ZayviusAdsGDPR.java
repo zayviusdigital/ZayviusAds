@@ -9,8 +9,8 @@ import com.google.android.ump.ConsentRequestParameters;
 import com.google.android.ump.UserMessagingPlatform;
 
 public class ZayviusAdsGDPR {
-    public static ConsentInformation consentInformation;
-    public static ConsentForm consentForm;
+    private static ConsentInformation consentInformation;
+    private static ConsentForm consentForm;
 
     /*Admob*/
     public static void Admob(Activity activity){
